@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-ink-50 text-ink-900 antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  html.dark body {
+    @apply bg-ink-950 text-ink-100;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(120, 130, 150, 0.35) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: rgba(120, 130, 150, 0.35);
+    border-radius: 9999px;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: rgba(120, 130, 150, 0.55);
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl bg-white shadow-card ring-1 ring-ink-200/70;
+  }
+  html.dark .card {
+    @apply bg-ink-900 ring-ink-800;
+  }
+  .input {
+    @apply w-full rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm text-ink-900 placeholder-ink-400 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20;
+  }
+  html.dark .input {
+    @apply border-ink-700 bg-ink-950 text-ink-100 placeholder-ink-500;
+  }
+  .label {
+    @apply mb-1.5 block text-xs font-medium text-ink-500;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-brand-600 text-white shadow-soft hover:bg-brand-700;
+  }
+  .btn-secondary {
+    @apply btn bg-ink-100 text-ink-700 hover:bg-ink-200;
+  }
+  html.dark .btn-secondary {
+    @apply bg-ink-800 text-ink-200 hover:bg-ink-700;
+  }
+  .btn-ghost {
+    @apply btn text-ink-600 hover:bg-ink-100;
+  }
+  html.dark .btn-ghost {
+    @apply text-ink-300 hover:bg-ink-800;
+  }
+  .btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-700;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium;
+  }
+  .table-row-hover {
+    @apply transition-colors hover:bg-ink-50;
+  }
+  html.dark .table-row-hover {
+    @apply hover:bg-ink-800/60;
+  }
+}
+
+@layer utilities {
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmer 1.5s infinite;
+  }
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
