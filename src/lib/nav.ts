@@ -13,6 +13,8 @@ import {
   Archive,
   ScanLine,
   Briefcase,
+  ClipboardList,
+  ArrowLeftRight,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -30,6 +32,8 @@ export const NAV: NavItem[] = [
   { id: 'pos', label: 'Point de Vente', icon: Store, group: 'Commercial' },
   { id: 'services', label: 'Services', icon: Briefcase, group: 'Commercial' },
   { id: 'products', label: 'Produits & Stock', icon: Package, group: 'Logistique', badge: 'stock' },
+  { id: 'inventory', label: 'Inventaire', icon: ClipboardList, group: 'Logistique' },
+  { id: 'stock-movements', label: 'Mouvements de stock', icon: ArrowLeftRight, group: 'Logistique' },
   { id: 'customers', label: 'Clients', icon: Users, group: 'Tiers' },
   { id: 'suppliers', label: 'Fournisseurs', icon: Truck, group: 'Tiers' },
   { id: 'purchases', label: 'Achats', icon: FileText, group: 'Tiers' },

@@ -10,6 +10,8 @@ import { Suppliers } from './pages/Suppliers';
 import { Sales } from './pages/Sales';
 import { POS } from './pages/POS';
 import { Services } from './pages/Services';
+import { Inventory } from './pages/Inventory';
+import { StockMovements } from './pages/StockMovements';
 import { Purchases } from './pages/Purchases';
 import { Payments } from './pages/Payments';
 import { Reports } from './pages/Reports';
@@ -187,6 +189,8 @@ export default function App() {
       case 'sales': return <Sales settings={settings} onNavigate={navigate} />;
       case 'pos': return <POS settings={settings} />;
       case 'services': return <Services settings={settings} />;
+      case 'inventory': return <Inventory settings={settings} profile={profile} />;
+      case 'stock-movements': return <StockMovements settings={settings} />;
       case 'purchases': return <Purchases settings={settings} />;
       case 'payments': return <Payments settings={settings} />;
       case 'reports': return <Reports settings={settings} />;

@@ -20,12 +20,12 @@ export const ROLE_COLORS: Record<UserRole, string> = {
 
 // Which nav page IDs each role can access
 export const ROLE_PERMISSIONS: Record<UserRole, string[]> = {
-  admin: ['dashboard', 'sales', 'pos', 'products', 'services', 'customers', 'suppliers', 'purchases', 'payments', 'reports', 'ai', 'ocr', 'archives', 'settings'],
-  manager: ['dashboard', 'sales', 'pos', 'products', 'services', 'customers', 'suppliers', 'purchases', 'payments', 'reports', 'ai', 'ocr', 'archives'],
+  admin: ['dashboard', 'sales', 'pos', 'products', 'services', 'inventory', 'stock-movements', 'customers', 'suppliers', 'purchases', 'payments', 'reports', 'ai', 'ocr', 'archives', 'settings'],
+  manager: ['dashboard', 'sales', 'pos', 'products', 'services', 'inventory', 'stock-movements', 'customers', 'suppliers', 'purchases', 'payments', 'reports', 'ai', 'ocr', 'archives'],
   sales: ['dashboard', 'sales', 'customers', 'pos', 'services', 'ai'],
   accountant: ['dashboard', 'sales', 'payments', 'reports', 'ai', 'ocr'],
   cashier: ['pos', 'services'],
-  warehouse: ['dashboard', 'products', 'purchases', 'ocr'],
+  warehouse: ['dashboard', 'products', 'inventory', 'stock-movements', 'purchases', 'ocr'],
 };
 
 export function canAccess(role: UserRole | undefined, page: string): boolean {

@@ -242,9 +242,83 @@ export type StockMovement = {
   unit_cost: number;
   reason: string | null;
   reference: string | null;
+  stock_before: number | null;
+  stock_after: number | null;
+  user_name: string | null;
+  warehouse: string | null;
   created_at: string;
   product?: Product | null;
 };
+
+export type InventoryType = 'general' | 'partial' | 'category' | 'location' | 'rotating';
+
+export type InventoryStatus = 'draft' | 'preparing' | 'counting' | 'gap_check' | 'validated' | 'cancelled';
+
+export type Inventory = {
+  id: string;
+  number: string;
+  name: string;
+  date: string;
+  type: InventoryType;
+  warehouse: string;
+  location: string | null;
+  responsible: string | null;
+  comment: string | null;
+  status: InventoryStatus;
+  progress: number;
+  total_items: number;
+  validated_at: string | null;
+  validated_by: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+export type InventoryLine = {
+  id: string;
+  inventory_id: string;
+  product_id: string;
+  theoretical_qty: number;
+  physical_qty: number | null;
+  gap: number;
+  gap_reason: string | null;
+  gap_status: string;
+  count_status: string;
+  count1: number | null;
+  count2: number | null;
+  count3: number | null;
+  unit_cost: number;
+  product?: Product | null;
+};
+
+export const INVENTORY_TYPE_LABELS: Record<InventoryType, string> = {
+  general: 'Général',
+  partial: 'Partiel',
+  category: 'Par catégorie',
+  location: 'Par emplacement',
+  rotating: 'Tournant',
+};
+
+export const INVENTORY_STATUS_LABELS: Record<InventoryStatus, string> = {
+  draft: 'Brouillon',
+  preparing: 'En préparation',
+  counting: 'Comptage en cours',
+  gap_check: 'Écart à vérifier',
+  validated: 'Validé',
+  cancelled: 'Annulé',
+};
+
+export const GAP_REASONS = [
+  'Erreur de comptage',
+  'Erreur de saisie',
+  'Casse',
+  'Perte',
+  'Vol',
+  'Produit offert',
+  'Vente non enregistrée',
+  'Retour non enregistré',
+  'Réception non enregistrée',
+  'Autre',
+] as const;
 
 export type Notification = {
   id: string;
